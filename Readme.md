@@ -1,28 +1,29 @@
-**#Basic Bank**
+# Basic Bank
 
-**##Description:**
-###This is a project that manages transactions and customers. It provides a user interface to view transaction details and manage customer information.
+## Description
+This is a project that manages transactions and customers. It provides a user interface to view transaction details and manage customer information.
 
-**##Screenshots**
-###Here are some screenshots of the application:
+## Screenshots
+Here are some screenshots of the application:
 
-**##Home Page**
- ![Alt text](Home.png) 
+### Home Page
+![Alt text](Home.png) 
 
-**##Transactions Made Till Now**
+### Transactions Made Till Now
 ![Alt text](Transaction.png)
 
-**##All Customers**
+### All Customers
 ![Alt text](Customer.png) 
 
-**##Transfer**
+### Transfer
 ![Alt text](transfer.png)
 
-**##Customer Details**
+### Customer Details
 ![Alt text](details.png)
 
-**##Transaction Successful**
+### Transaction Successful
 ![Alt text](Success.png)
 
-**##Transaction Failed**
-![Alt text](failed.png) 
+### Transaction Failed
+![Alt text](failed.png)
+
