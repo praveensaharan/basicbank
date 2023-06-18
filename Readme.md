@@ -1,1 +1,1 @@
-![Alt text](Home.png) ![Alt text](Transaction.png)  ![Alt text](Customer.png) ![Alt text](details.png) ![Alt text](transfer.png) ![Alt text](Success.png)  ![Alt text](failed.png) 
+![Alt text](Home.png) Transaction Made Till Now ![Alt text](Transaction.png)  All Customers ![Alt text](Customer.png)  ![Alt text](transfer.png) ![Alt text](details.png) ![Alt text](Success.png)  ![Alt text](failed.png) 
