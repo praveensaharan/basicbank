@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Transfer Money</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <style>
+      .text-center {
+        color: black;
+        text-transform: uppercase;
+        font-size: 23px;
+        margin: -44px 0 20px 0;
+        display: flex;
+        text-align: center;
+      }
+
+      .box {
+        padding: 10px 10px;
+      }
+
+      .input-container {
+        position: relative;
+        margin: 10px;
+      }
+
+      .input-container label {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        font-size: 16px;
+        color: #fff;
+        pointer-event: none;
+        transition: all 0.5s ease-in-out;
+      }
+
+      .input-container input {
+        border: 0;
+        border-bottom: 1px solid #555;
+        background: transparent;
+        padding: 8px 0 5px 0;
+        font-size: 16px;
+        color: #fff;
+      }
+
+      .input-container input:focus {
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #e74c3c;
+      }
+
+      .btn {
+        color: #fff;
+        background-color: #e74c3c;
+        outline: none;
+        border: 1px;
+        color: #fff;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        margin-top: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .input-container input:focus ~ label,
+      .input-container input:valid ~ label {
+        top: -12px;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="{{ url_for('home') }}" class="active">Home</a>
+      <a href="{{ url_for('transactions') }}">Transcation</a>
+      <a href="#about">Check Balance</a>
+      <a href="#about">About</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+    {% if sure %} {% if success_message %}
+    <div class="success-message" style="display: flex; justify-content: center">
+      <img height="190px" src="/static/img/Success.png" alt="Image" />
+    </div>
+    {% else %}
+    <div class="success-message" style="display: flex; justify-content: center">
+      <img height="190px" src="/static/img/Failed.png" alt="Image" />
+    </div>
+    {% endif %} {% endif %}
+
+    <button id="back-button">Back</button>
+
+    <div style="display: flex; flex-direction: column">
+      <div style="position: relative">
+        <div class="box">
+          <form
+            id="accountForm"
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+            "
+            action="/transfer"
+            method="POST"
+          >
+            <h2 class="text-center">Account Details</h2>
+
+            <div class="input-container">
+              <input
+                type="text"
+                id="sender_account_number"
+                name="sender_account_number"
+                required
+              />
+              <label for="sender_account_number">Your Account No.</label>
+            </div>
+
+            <div class="input-container">
+              <input
+                type="text"
+                id="to_account_number"
+                name="to_account_number"
+                required
+              />
+              <label for="to_account_number">Receiver Account No.</label>
+            </div>
+
+            <div class="input-container">
+              <input
+                type="number"
+                id="Amount"
+                name="Amount"
+                step="0.01"
+                required
+              />
+              <label for="Amount">Amount</label>
+            </div>
+
+            <button type="submit" class="btn">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <div>
+        <h1>Transcations</h1>
+        <main>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">ID</th>
+                <th scope="col">From</th>
+                <th scope="col">TO</th>
+                <th scope="col">Time</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for chat in myChat|reverse %}
+              <tr>
+                <td data-title="Provider Name">{{ chat._id }}</td>
+                <td data-title="E-mail">{{ chat.Status }}</td>
+                <td data-title="Provider Name">{{ chat.From }}</td>
+                <td data-title="Provider Balance">{{ chat.To }}</td>
+                <td data-title="E-mail">{{ chat.Time }}</td>
+                <td data-title="E-mail">{{ chat.Amount }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </main>
+      </div>
+    </div>
+    <script>
+      document.getElementById("back-button").onclick = function () {
+        location.href = "{{ url_for('home') }}";
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="{{ url_for('home') }}" class="active">Home</a>
+      <a href="{{ url_for('transactions') }}">Transcation</a>
+      <a href="#about">Check Balance</a>
+      <a href="#about">About</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <div style="padding-left: 16px">
+      <h2>Basic Banking System</h2>
+      <button id="transfer-button">Make Transcation</button>
+    </div>
+
+    <script>
+      document.getElementById("transfer-button").onclick = function () {
+        location.href = "{{ url_for('transfer') }}";
+      };
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+    </script>
+    <h1>Customers</h1>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for chat in myChats %}
+          <tr>
+            <td data-title="Provider Name">{{ loop.index }}</td>
+            <td data-title="Provider Name">{{ chat.name }}</td>
+            <td data-title="Provider Balance">{{ chat.balance }}</td>
+            <td data-title="E-mail">{{ chat.email }}</td>
+            <td class="select">
+              <a
+                class="button"
+                href="{{ url_for('view_customer', customer_id=chat.account_number) }}"
+                >Select</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
